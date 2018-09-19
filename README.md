@@ -34,7 +34,7 @@ function showPosition(position) {
 <p id="demo"></p>
 
 <script>
-function myFunction() {
+function getLocation() {
   document.getElementById("demo").innerHTML = "Your SOS message was sent!";
 }
 </script>
