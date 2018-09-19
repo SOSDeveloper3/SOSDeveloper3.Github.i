@@ -9,7 +9,7 @@
 <input type="radio" name="choice" value="Injured"> Injured
 </form>
 <button onclick="myFunction()">Submit</button>
-<button onclick="getLocation()">Try It</button>
+<button onclick="getLocation()">Send location</button>
 
 <p id="demo"></p>
 
