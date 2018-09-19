@@ -8,7 +8,15 @@
 <input type="radio" name="choice" value="Kidnapped"> Kidnapped
 <input type="radio" name="choice" value="Injured"> Injured
 </form>
-<button type="button" onclick="alert('Your SOS message was sent!')">Submit</button>
+<button onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Your SOS message was sent!";
+}
+</script>
 
   
 </body>
