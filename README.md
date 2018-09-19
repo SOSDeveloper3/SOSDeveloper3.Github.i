@@ -1,5 +1,4 @@
 # SOS
-<!DOCTYPE html>
 <html>
   <body>
   <h3>Welcome to SOS!</h3>
