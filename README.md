@@ -24,5 +24,6 @@ function showPosition(position) {
 }
 </script>
 <p id="demo"></p>
+  <p id="demo"></p>
 </body>
                
