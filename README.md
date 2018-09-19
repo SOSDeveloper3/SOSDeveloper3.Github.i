@@ -1,7 +1,6 @@
 # SOS
   <body>
   <h6>What is going on?</h6>
-
 <form >
 <input type="radio" name="choice" value="Robbed"> Robbed
 <input type="radio" name="choice" value="Harrased"> Harrased
@@ -10,10 +9,8 @@
 </form>
 <button onclick="getLocation()">Submit</button>
 <p id="demo"></p>
-
 <script>
 var x = document.getElementById("demo");
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -21,25 +18,12 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
 }
 </script>
-
-
 <p id="demo"></p>
-
-<p id="demo"></p>
-
-<script>
-function getLocation() {
-  document.getElementById("demo").innerHTML = "Your SOS message was sent!";
-}
-</script>
-
-  
 </body>
 
                
