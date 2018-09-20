@@ -9,30 +9,73 @@
 </form>
 <button onclick="getLocation()">Submit</button>
 <p id="demo"></p>
-<script>
-var x = document.getElementById("demo");
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+if (navigator.geolocation) {
+  console.log('Geolocation is supported!');
 }
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
+else {
+  console.log('Geolocation is not supported for this Browser/OS version yet.');
 }
-</script>
+  <div id="tripmeter">
+  <p>
+    Starting Location (lat, lon):<br/>
+    <span id="startLat">???</span>°, <span id="startLon">???</span>°
+  </p>
+  <p>
+    Current Location (lat, lon):<br/>
+    <span id="currentLat">???</span>°, <span id="currentLon">???</span>°
+  </p>
+  <p>
+    Distance from starting location:<br/>
+    <span id="distance">0</span> km
+  </p>
+</div>
+  window.onload = function() {
+  var startPos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  });
+};
+  window.onload = function() {
+  var startPos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    // same as above
+  }, function(error) {
+    alert('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from locaton provider)
+    //   3: timed out
+  });
+};
+  navigator.geolocation.watchPosition(function(position) {
+  document.getElementById('currentLat').innerHTML = position.coords.latitude;
+  document.getElementById('currentLon').innerHTML = position.coords.longitude;
+});
+  navigator.geolocation.watchPosition(function(position) {
+  // same as above
+  document.getElementById('distance').innerHTML =
+      calculateDistance(startPos.coords.latitude, startPos.coords.longitude,
+                        position.coords.latitude, position.coords.longitude);
+});
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+  var R = 6371; // km
+  var dLat = (lat2 - lat1).toRad();
+  var dLon = (lon2 - lon1).toRad(); 
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+          Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+  var d = R * c;
+  return d;
+}
+Number.prototype.toRad = function() {
+  return this * Math.PI / 180;
+}
+ 
 <p id="demo"></p>
   <p id="demo"></p>
-  <iframe src="doesnt-matter" class="hidden" name="sneaky"></iframe>
-
-<form method="post" action="." target="sneaky">
-    <input type="hidden" name="confirm" value="1" />
-    <input type="submit" value="OK" />
-</form>
-.hidden {
-    display:none;
-}
 </body>
 
