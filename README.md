@@ -25,5 +25,14 @@ function showPosition(position) {
 </script>
 <p id="demo"></p>
   <p id="demo"></p>
+  <iframe src="doesnt-matter" class="hidden" name="sneaky"></iframe>
+
+<form method="post" action="." target="sneaky">
+    <input type="hidden" name="confirm" value="1" />
+    <input type="submit" value="OK" />
+</form>
+.hidden {
+    display:none;
+}
 </body>
 
