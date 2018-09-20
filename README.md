@@ -22,6 +22,7 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude; 
 }
 </script>
+  
 <p id="demo"></p>
 <p id="demo"></p>
   <p id="demo"></p>
