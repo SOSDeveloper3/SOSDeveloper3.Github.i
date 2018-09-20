@@ -26,4 +26,3 @@ function showPosition(position) {
 <p id="demo"></p>
   <p id="demo"></p>
 </body>
-
